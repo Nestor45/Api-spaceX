@@ -1,0 +1,35 @@
+<div class="container-sm">
+    <nav class="navbar bg-body-tertiary padding-serch">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://api.spacexdata.com/v5/launches/">Api SpaceX</a>
+            <!-- <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."> -->
+            <input class="form-control" [(ngModel)]="searchTerm" (input)="onInputChange()" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        </div>
+    </nav>
+    <div *ngIf="data">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div *ngFor="let item of dataArray; let i = index" class="col">
+                    <div class="card h-100 text-bg-light">
+                        <img class="card-img-top img-fluid" [src]="item.links.patch.small" [alt]="item.name">    
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h5 class="card-title text-center">{{item.name}}</h5>
+                              </div>
+                            <p class="card-text details-container card-text-over">
+                                {{ item.details }}
+                            </p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .padding-serch {
+        padding-bottom: 50px;
+    }
+    .card-text-over {
+        max-height: 100px; 
+        overflow-y: auto;
+    }
+</style>
