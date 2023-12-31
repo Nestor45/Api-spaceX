@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit{
 
   private loadData(): void {
     this.apiService.getData().subscribe(data => {
+      console.log("dataload",data);
       const newData = data.slice(0, this.itemsPerScroll);
       this.dataArray = this.dataArray.concat(newData);
       this.filteredDataArray = this.dataArray;
@@ -47,8 +48,8 @@ export class HomeComponent implements OnInit{
     const windowHeight = window.innerHeight;
     const documentHeight = document.body.offsetHeight;
     const scrollPosition = window.scrollY;
-    const isEndOfPage = windowHeight + scrollPosition >= documentHeight;
-  
+    const isEndOfPage = (windowHeight + scrollPosition) + 1 >= documentHeight;
+    
     // Solo carga más datos si el usuario ha llegado al final de la página
     return isEndOfPage;
   }
