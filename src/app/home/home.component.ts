@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit{
   }
 
   private _filter(value: string): any[] {
-    console.log("🚀 ~ file: home.component.ts:66 ~ HomeComponent ~ _filter ~ this.dataArray:", (this.dataArray))
     return this.dataArray.filter(option => 
       option.name.toLowerCase().includes(value)
     );
